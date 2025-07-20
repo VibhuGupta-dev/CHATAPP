@@ -10,14 +10,14 @@ function Home() {
   const navigate = useNavigate();
   const [hasInteracted, setHasInteracted] = useState(false);
 
-  // 🔁 Redirect only after user clicks login and gets authenticated
   useEffect(() => {
-    if (!isLoading && isAuthenticated ) {
+    console.log("🔥 [Home] useEffect triggered: isAuthenticated =", isAuthenticated, "isLoading =", isLoading);
+
+    if (!isLoading && isAuthenticated) {
       navigate("/create-room");
     }
   }, [isAuthenticated, isLoading, navigate]);
 
-  // ✅ Show loading only when checking session
   if (isLoading) {
     return (
       <div className="h-screen w-screen flex items-center justify-center bg-black text-white">
@@ -28,19 +28,16 @@ function Home() {
 
   return (
     <div className="h-screen w-screen flex flex-row items-center justify-center overflow-hidden relative text-white">
-      {/* 🔵 Logo */}
       <div className="absolute top-5 left-8 text-3xl tracking-widest font-bold font-sans">
         Outword
       </div>
 
-      {/* 🔴 Content */}
       <div className="flex-1 flex flex-col justify-center items-center gap-6 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold font-sans leading-tight">
           CAPTURES THE ANONYMOUS <br />
           VOICE CHAT IDEA
         </h1>
 
-        {/* 🔘 Buttons */}
         <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
           <motion.button
             whileHover={{ scale: 1.1 }}
@@ -68,7 +65,6 @@ function Home() {
         </div>
       </div>
 
-      {/* 🟢 Right Tilted Card */}
       <div className="hidden lg:flex flex-1 justify-center items-center">
         <TiltedCard
           imageSrc={front}
