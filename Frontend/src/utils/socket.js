@@ -1,4 +1,3 @@
-// socket.js
 import { io } from "socket.io-client";
 
 let socket;
@@ -10,11 +9,11 @@ export const connectSocket = () => {
         });
 
         socket.on("connect", () => {
-            console.log("✅ [Client] Socket connected:", socket.id);
+            console.log("✅ [Client] Connected:", socket.id);
         });
 
-        socket.on("connect_error", (err) => {
-            console.error("❌ [Client] Connection error:", err.message);
+        socket.on("disconnect", () => {
+            console.log("❌ [Client] Disconnected");
         });
     }
 };
@@ -22,7 +21,6 @@ export const connectSocket = () => {
 export const disconnectSocket = () => {
     if (socket) {
         socket.disconnect();
-        console.log("❌ [Client] Socket disconnected");
         socket = null;
     }
 };

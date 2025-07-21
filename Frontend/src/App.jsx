@@ -1,14 +1,15 @@
+// src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import RippleGrid from '../public/Background'; // Ripple effect component
+import RippleGrid from '../public/Background'; // or adjust path
 import Home from './Components/Home';
 import CreateRoom from './Components/CreateRoom';
-import PrivateRoute from './Components/PrivateRoute'; // ✅ Import PrivateRoute
+import PrivateRoute from './Components/PrivateRoute';
+import Room from './Components/Room';
 
 function App() {
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black">
-      {/* Background Ripple */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <RippleGrid
           enableRainbow={false}
@@ -22,13 +23,10 @@ function App() {
         />
       </div>
 
-      {/* Foreground Routing */}
       <div className="relative z-10 h-full">
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-
-            {/* 🔒 Protected Route */}
             <Route
               path="/create-room"
               element={
@@ -37,6 +35,7 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="/room/:roomId" element={<Room />} />
           </Routes>
         </Router>
       </div>

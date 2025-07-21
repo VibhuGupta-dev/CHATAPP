@@ -19,14 +19,20 @@ const io = new Server(server, {
 console.log("✅ [Socket.js] Socket.IO server initialized");
 
 io.on('connection', (socket) => {
-    console.log('🟢 [Socket.io] A user connected:', socket.id);
+    console.log('🟢 [Socket.io] Connected:', socket.id);
 
-    socket.on('test-message', (data) => {
-        console.log('📩 [Socket.io] Received test-message:', data);
+    socket.on('join-room', ({ roomId, username }) => {
+        socket.join(roomId);
+        console.log(`👤 ${username} joined room ${roomId}`);
+    });
+
+    socket.on('send-message', ({ roomId, sender, text }) => {
+        console.log(`📨 Message in ${roomId} from ${sender}: ${text}`);
+        socket.to(roomId).emit("receive-message", { sender, text });
     });
 
     socket.on('disconnect', () => {
-        console.log('🔴 [Socket.io] User disconnected:', socket.id);
+        console.log('🔴 [Socket.io] Disconnected:', socket.id);
     });
 });
 
