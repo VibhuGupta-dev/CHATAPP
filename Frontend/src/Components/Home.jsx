@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import front from "../assets/front.jpg";
+import front from "../assets/Front.jpg";
 import TiltedCard from "./TiltedCard.jsx";
 
 function Home() {
