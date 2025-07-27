@@ -5,7 +5,7 @@ import express from 'express';
 console.log("✅ [index.js] Loaded");
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://chatapp-wpmu.vercel.app",
     credentials: true,
 }));
 
