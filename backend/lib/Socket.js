@@ -11,7 +11,7 @@ console.log("✅ [Socket.js] Express + HTTP server created");
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "https://chatapp-wpmu.vercel.app",
         credentials: true,
     },
 });
