@@ -4,7 +4,7 @@ let socket;
 
 export const connectSocket = () => {
     if (!socket) {
-        socket = io("http://localhost:5000", {
+        socket = io("https://chatapp-backend-1-sgnx.onrender.com", {
             transports: ["websocket"],
         });
 
