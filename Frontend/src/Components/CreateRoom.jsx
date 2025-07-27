@@ -1,4 +1,3 @@
-// src/Components/CreateRoom.jsx
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +13,6 @@ function CreateRoom() {
 
   useEffect(() => {
     connectSocket();
-   
   }, []);
 
   const handleCreateRoom = () => {
@@ -52,29 +50,42 @@ function CreateRoom() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-900 text-white">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-6">Create or Join a Room</h1>
-        <div className="space-x-4">
-          <button
-            onClick={handleCreateRoom}
-            className="px-6 py-2 bg-green-600 rounded hover:bg-green-700"
-          >
-            Create Room
-          </button>
-          <button
-            onClick={handleJoinRoom}
-            className="px-6 py-2 bg-blue-600 rounded hover:bg-blue-700"
-          >
-            Join Room
-          </button>
-          <button
-            onClick={handleLogout}
-            className="ml-4 px-6 py-2 bg-red-600 hover:bg-red-700 rounded"
-          >
-            Logout
-          </button>
+    <div className="h-screen flex bg-gray-900 text-white">
+      {/* Left Half */}
+      <div className="w-1/2 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-6">Create or Join a Room</h1>
+          <div className="space-x-4">
+            <button
+              onClick={handleCreateRoom}
+              className="px-6 py-2 bg-green-600 rounded hover:bg-green-700"
+            >
+              Create Room
+            </button>
+            <button
+              onClick={handleJoinRoom}
+              className="px-6 py-2 bg-blue-600 rounded hover:bg-blue-700"
+            >
+              Join Room
+            </button>
+          </div>
         </div>
+      </div>
+      {/* Right Half */}
+      <div className="w-1/2 flex items-center justify-center">
+        {/* Empty for now, can be used for additional content */}
+      </div>
+      {/* Logout Button and Title in Top Corners */}
+      <div className="absolute top-5 left-8 text-3xl tracking-widest font-bold font-sans">
+        Outword
+      </div>
+      <div className="absolute top-5 right-8">
+        <button
+          onClick={handleLogout}
+          className="px-6 py-2 bg-red-600 hover:bg-red-700 rounded"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
